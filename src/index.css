@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 303 100% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 303 100% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 303 100% 54%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 240 10% 3.9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 303 100% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 303 100% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-accent/10 selection:text-accent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    position: relative;
+    z-index: 1; /* Set body content to a low z-index */
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+  
+  /* Set the z-index for the div with data-lov-id attribute */
+  div[data-lov-id] {
+    z-index: 9999 !important; /* Using !important to ensure it overrides any other z-index values */
+    position: relative; /* Adding position relative to ensure z-index works properly */
+    background-color: black !important; /* Set background to solid black */
+  }
+  
+  /* Set header to highest z-index */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100; /* High z-index but lower than data-lov-id */
+    background-color: black; /* Solid black background */
+  }
+
+  /* Fix for sticky headers */
+  .sticky {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+
+  /* Set main content sections to lowest z-index */
+  section {
+    position: relative;
+    z-index: 10; /* Lower than header */
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg;
+  }
+  
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-lg border border-white/10 shadow-lg;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#FF13F0] to-purple-500 bg-clip-text text-transparent;
+  }
+  
+  .bg-nav {
+    @apply bg-black;
+  }
+  
+  .neon-gradient {
+    @apply bg-gradient-to-br from-[#FF13F0] to-purple-600;
+  }
+  
+  .neon-glow {
+    @apply shadow-[0_0_15px_rgba(255,19,240,0.6)];
+  }
+}
